@@ -1,21 +1,21 @@
 $(document).ready(function(){
 
-function someFunc() {
-  if (!$("input[name='movie']").val()) {
-   alert('Empty field, put something!');
-   return false;
-}
-}
-
 var $Form = $('form'), $Container = $('#jsonHolder');
 $Container.hide();
 $Form.on('submit', function(p_oEvent){
-    var sUrl, sMovie, oData;
-    p_oEvent.preventDefault();
+
+var sUrl, sMovie, oData;
+p_oEvent.preventDefault();
+
 sMovie = $Form.find('input').val();
+if (sMovie == "") {
+  alert('Empty field, put something!');
+  return false;
+};
 var regex = /^tt/i.test(sMovie);
 //var found = sMovie.test(regex);
 console.log(regex);
+console.log(sMovie);
 
   if (regex == true) {
     sUrl = 'http://www.omdbapi.com/?i=' + sMovie + '&type=movie&tomatoes=true';
