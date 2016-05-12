@@ -19,12 +19,18 @@
 <div id="content-wrapper">
 <div id="wrapper">
 
+<div id="title">
+<h1>Movie search</h1>
+<p>Here you can search movies from OMDb database by inputting movie name or by using IMDb ID.</p>
+<p>For example: the ID from this URL: http://www.imdb.com/title/tt0780504/ is this <b>tt0780504</b></p>
+</div>
+
 <form name="movieForm" onsubmit="return someFunc()">
  		<label>
- 		<input type="text" name="movie" placeholder="Movie title or IMDb ID" />
+ 		<input type="text" id="search" name="movie" placeholder="Movie title or IMDb ID" />
  		</label>   
-	<input type="radio" name="radioBtn" value="imdb" id="imdb">IMDb
-	<input type="radio" name="radioBtn" value="search" id="search">Movie name
+<!--	<input type="radio" name="radioBtn" value="imdb" id="imdb">IMDb
+	<input type="radio" name="radioBtn" value="search" id="search">Movie name -->
 	<input type="submit" id="submit" value="Submit">
 </form>
 
@@ -43,7 +49,6 @@ function someFunc() {
    alert('Empty field, put something!');
    return false;
 }
-	return true;
 }
 
 var $Form = $('form'), $Container = $('#jsonHolder');
@@ -52,11 +57,17 @@ $Form.on('submit', function(p_oEvent){
     var sUrl, sMovie, oData;
     p_oEvent.preventDefault();
 sMovie = $Form.find('input').val();
-	if ($("input[name=radioBtn][value='imdb']").prop("checked", true)) {
-    sUrl = 'http://www.omdbapi.com/?i=' + sMovie + '&type=movie&tomatoes=true'
-  } if ($("input[name=radioBtn][value='search']").prop("checked", true)) {
-    sUrl = 'http://www.omdbapi.com/?t=' + sMovie + '&type=movie&tomatoes=true'
+var regex = /^tt/i.test(sMovie);
+//var found = sMovie.test(regex);
+console.log(regex);
+
+	if (regex == true) {
+    sUrl = 'http://www.omdbapi.com/?i=' + sMovie + '&type=movie&tomatoes=true';
   }
+  else {
+    sUrl = 'http://www.omdbapi.com/?t=' + sMovie + '&type=movie&tomatoes=true';
+  }
+
     $.ajax(sUrl, {
         complete: function(p_oXHR, p_sStatus){
             oData = $.parseJSON(p_oXHR.responseText);
