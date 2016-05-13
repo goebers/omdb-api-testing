@@ -5,3 +5,19 @@
 #wrapper {
 	text-align: center;
 }
+
+#fixedFooter {
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+	background-color: #ffffff;
+}
+
+h1 , p , span , h3 , a {
+	font-family: 'Inconsolata';
+}
+
+a {
+	display: block;
+}

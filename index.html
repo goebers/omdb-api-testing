@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
 
-  <title>JSON fune</title>
+  <title>OMDb Search</title>
 
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -30,21 +31,26 @@
 <form name="movieForm">
  		<label>
  		<input type="text" id="search" name="movie" placeholder="Movie title or IMDb ID" />
- 		</label>   
-<!--	<input type="radio" name="radioBtn" value="imdb" id="imdb">IMDb
-	<input type="radio" name="radioBtn" value="search" id="search">Movie name -->
+ 		</label>
 	<input type="submit" id="submit" value="Submit">
 </form>
 
 <div id="jsonHolder">
 	<h3 class="title">Title</h3>
-	<span class="year">Year</span><br>
-	<span class="genre">Genre</span>
-	<p class="plot">Plot</p>
+	<span class="release">Released</span><br>
+	<span class="genre">Genre</span><br>
+	<span>Rated: </span><span class="rated">Rated</span>
+	<p class="plot">Plot</p><br>
+	<p class="website">Website</p>
 	<span class="poster">Poster</span>
+</div>
+
+<div id="fixedFooter">
+<p>Made by: <a href="https://github.com/goebers">Robert</a>Also thanks to <a href="http://omdbapi.com/">Brian Fritz</a> & <a href="https://jsfiddle.net/user/potherca/fiddles/">Ben Peachey</a></p>
 </div>
 
 </div>
 </div>
 </body>
+<!-- kaikki hyvä loppuu aikanaan -->
 </html>

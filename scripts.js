@@ -14,8 +14,8 @@ if (sMovie == "") {
 };
 var regex = /^tt/i.test(sMovie);
 //var found = sMovie.test(regex);
-console.log(regex);
-console.log(sMovie);
+//console.log(regex);
+//console.log(sMovie);
 
   if (regex == true) {
     sUrl = 'http://www.omdbapi.com/?i=' + sMovie + '&type=movie&tomatoes=true';
@@ -29,9 +29,11 @@ console.log(sMovie);
             oData = $.parseJSON(p_oXHR.responseText);
             console.log(oData);
             $Container.find('.title').text(oData.Title);
-            $Container.find('.year').text(oData.Year);
+            $Container.find('.release').text(oData.Released);
             $Container.find('.genre').text(oData.Genre);
+            $Container.find('.rated').text(oData.Rated);
             $Container.find('.plot').text(oData.Plot);
+            $Container.find('.website').html('<a href="' + oData.Website + '">' + oData.Website + '</a>');
             $Container.find('.poster').html('<img src="' + oData.Poster + '"/>');
             $Container.show();
         }
